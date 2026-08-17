@@ -1,0 +1,23 @@
+# Questão 1 - Pilha
+
+pilha = []
+
+for i in range(10):
+    descricao = input(f"Digite a descrição da tarefa {i + 1}: ")
+    prioridade = int(input("Digite a prioridade (0 a 5): "))
+
+    tarefa = {
+        "descricao": descricao,
+        "prioridade": prioridade
+    }
+
+    pilha.append(tarefa)
+
+print("\nTarefas removidas da pilha:")
+
+while pilha:
+    tarefa = pilha.pop()
+
+    print(f"Descrição: {tarefa['descricao']}")
+    print(f"Prioridade: {tarefa['prioridade']}")
+    print("-" * 30)
