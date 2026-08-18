@@ -1,0 +1,60 @@
+def mostrar_estado(estado):
+    for i in range(0, 9, 3):
+        print(estado[i:i + 3])
+    print()
+
+
+def estados_subsequentes(estado):
+    estados = []
+
+    posicao_vazia = estado.index(0)
+
+    linha = posicao_vazia // 3
+    coluna = posicao_vazia % 3
+
+    movimentos = [
+        (-1, 0),  # cima
+        (1, 0),   # baixo
+        (0, -1),  # esquerda
+        (0, 1)    # direita
+    ]
+
+    for movimento_linha, movimento_coluna in movimentos:
+
+        nova_linha = linha + movimento_linha
+        nova_coluna = coluna + movimento_coluna
+
+        if 0 <= nova_linha < 3 and 0 <= nova_coluna < 3:
+
+            nova_posicao = nova_linha * 3 + nova_coluna
+
+            novo_estado = estado.copy()
+
+            novo_estado[posicao_vazia], novo_estado[nova_posicao] = (
+                novo_estado[nova_posicao],
+                novo_estado[posicao_vazia]
+            )
+
+            estados.append(novo_estado)
+
+    return estados
+
+
+estado = []
+
+print("Digite o estado do jogo.")
+print("Use 0 para representar o espaço vazio.")
+
+for i in range(9):
+    valor = int(input(f"Digite a posição {i + 1}: "))
+    estado.append(valor)
+
+print("\nEstado inicial:")
+mostrar_estado(estado)
+
+print("Estados subsequentes:")
+
+estados = estados_subsequentes(estado)
+
+for estado_novo in estados:
+    mostrar_estado(estado_novo)
