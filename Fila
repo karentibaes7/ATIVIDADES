@@ -1,0 +1,25 @@
+# Questão 2 - Fila
+
+from collections import deque
+
+fila = deque()
+
+for i in range(10):
+    descricao = input(f"Digite a descrição da tarefa {i + 1}: ")
+    prioridade = int(input("Digite a prioridade (0 a 5): "))
+
+    tarefa = {
+        "descricao": descricao,
+        "prioridade": prioridade
+    }
+
+    fila.append(tarefa)
+
+print("\nTarefas removidas da fila:")
+
+while fila:
+    tarefa = fila.popleft()
+
+    print(f"Descrição: {tarefa['descricao']}")
+    print(f"Prioridade: {tarefa['prioridade']}")
+    print("-" * 30)
