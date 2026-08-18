@@ -1,0 +1,24 @@
+# Questão 3 - Fila de prioridades
+
+import heapq
+
+fila_prioridades = []
+
+for i in range(10):
+    descricao = input(f"Digite a descrição da tarefa {i + 1}: ")
+    prioridade = int(input("Digite a prioridade (0 a 5): "))
+
+    tarefa = ( -prioridade, i, descricao )
+
+    heapq.heappush(fila_prioridades, tarefa)
+
+print("\nTarefas removidas por ordem de prioridade:")
+
+while fila_prioridades:
+    prioridade, ordem, descricao = heapq.heappop(fila_prioridades)
+
+    prioridade = -prioridade
+
+    print(f"Descrição: {descricao}")
+    print(f"Prioridade: {prioridade}")
+    print("-" * 30)
